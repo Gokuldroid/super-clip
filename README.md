@@ -1,6 +1,6 @@
 Clipboard manager built using electron
 ##### Goto definition for components 
-![demo](demo/super-clip-demo.gif).
+![demo](demo/super-clip-demo.gif)
 
 
 ## Available Scripts
