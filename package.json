@@ -2,21 +2,35 @@
   "name": "super-clip",
   "version": "0.1.0",
   "private": true,
+  "main": "public/electron.js",
   "dependencies": {
+    "@types/fuzzy-search": "^2.1.0",
     "@types/jest": "24.0.17",
-    "@types/node": "12.7.1",
-    "@types/react": "16.9.0",
-    "@types/react-dom": "16.8.5",
+    "@types/node": "^12.7.1",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.8.5",
+    "cross-env": "^5.2.0",
+    "electron-is-dev": "^1.1.0",
+    "electron-reload": "^1.5.0",
+    "fuzzy-search": "^3.0.1",
+    "mousetrap": "^1.6.3",
+    "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.3"
+    "typescript": "^3.5.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react-start": "PORT=3006 react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "react-watch": "cra-build-watch",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-watch\" \"electron .\"",
+    "build-mac": "electron-packager . super-clip --overwrite --platform=darwin --arch=x64 --prune=true --out=dist --version-string.FileDescription='super-clip' --version-string.ProductName='super-clip' --asar"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +46,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "cra-build-watch": "^2.0.0",
+    "electron": "^6.0.1",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.4",
+    "wait-on": "^3.3.0"
   }
 }
