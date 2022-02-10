@@ -14,7 +14,7 @@
     "electron-reload": "^1.5.0",
     "fuzzy-search": "^3.0.1",
     "mousetrap": "^1.6.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.1",
